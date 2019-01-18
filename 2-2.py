@@ -40,6 +40,8 @@ plt.plot(train_z, train_y, 'o')
 plt.show()
 
 #%%
+print(theta0)
+print(theta1)
 # 学習率
 ETA = 1e-3
 
@@ -53,14 +55,10 @@ count = 0
 error = E(train_z, train_y)
 
 while diff > 1e-2:
-    # 更新結果を一時変数に保存
-    tmp0 = theta0 - ETA * np.sum((f(train_z) - train_y))
-    tmp1 = theta1 - ETA * np.sum((f(train_z) - train_y) * train_z)
+    # 更新結果を更新
+    theta0 = theta0 - ETA * np.sum((f(train_z) - train_y))
+    theta1 = theta1 - ETA * np.sum((f(train_z) - train_y) * train_z)
     
-    # パラメータを更新
-    theta0 = tmp0
-    theta1 = tmp1
-
     # 前回の誤差と差分を計算
     current_error = E(train_z, train_y)
     diff = error - current_error
@@ -73,7 +71,7 @@ while diff > 1e-2:
 
 
 #%%
-x = np.linspace(-2.5, 2.5, 100)
+x = np.linspace(-3, 3, 100)
 
 plt.plot(train_z, train_y, 'o')
 plt.plot(x, f(x))
@@ -85,3 +83,25 @@ print(f(standardize(100)))
 print(f(standardize(200)))
 
 print(f(standardize(300)))
+
+
+#%%
+a = np.random.randint(0, 10, size=(2,5))
+print(a)
+
+print(np.sum(a))
+
+arr = np.asarray([1,2,3])
+
+print(arr)
+
+#%%
+print(arr)
+print(arr.mean())
+print(arr.std())
+print(arr.max())
+print(arr.min())
+
+a = np.random.randint(0, 10, size=(2,5))
+print(a)
+print(np.sum(a, axis=0))
