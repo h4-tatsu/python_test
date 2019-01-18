@@ -78,3 +78,10 @@ x = np.linspace(-2.5, 2.5, 100)
 plt.plot(train_z, train_y, 'o')
 plt.plot(x, f(x))
 plt.show()
+
+#%%
+print(f(standardize(100)))
+
+print(f(standardize(200)))
+
+print(f(standardize(300)))
