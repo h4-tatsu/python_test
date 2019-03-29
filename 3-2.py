@@ -43,13 +43,14 @@ ETA = 1e-3
 
 # 繰り返し回数
 epoch = 5000
+count = 0
 
 # 学習を繰り返す
 for _ in range(epoch):
     theta = theta - ETA * np.dot(f(X) - train_y, X)
     # ログの出力
     count += 1
-    print('{}回目： w = {}'.format(count, w))
+    print('{}回目： theta = {}'.format(count, theta))
 
 x0 = np.linspace(-2, 2, 100)
 plt.plot(train_z[train_y == 1, 0], train_z[train_y == 1, 1], 'o')
@@ -63,10 +64,11 @@ f(to_matrix(standardize([
     [100, 200]
 ])))
 
-def classify(class_x):
-    return (f(class_x) >= 0.5).astype(np.int)
-
+#%%
 classify(to_matrix(standardize([
     [200, 100],
     [100, 200]
 ])))
+
+def classify(class_x):
+    return (f(class_x) >= 0.5).astype(np.int)
